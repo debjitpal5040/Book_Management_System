@@ -10,8 +10,8 @@ import { BookService } from '../book.service';
 })
 export class BookDetailsComponent implements OnInit {
 
-  id: number
-  book: Book
+  id!: number
+  book!: Book
   constructor(private route: ActivatedRoute, private bookService: BookService) { }
 
   ngOnInit(): void {

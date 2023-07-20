@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class BookListComponent implements OnInit {
 
-  books: Book[];
+  books!: Book[];
 
   constructor(private bookService: BookService,
     private router: Router) { }
