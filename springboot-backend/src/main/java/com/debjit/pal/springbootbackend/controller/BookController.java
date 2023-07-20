@@ -44,7 +44,7 @@ public class BookController {
     @GetMapping("/books/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
         return ResponseEntity.ok(book);
     }
 
@@ -53,7 +53,7 @@ public class BookController {
     @PutMapping("/books/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
 
         book.setName(bookDetails.getName());
         book.setAuthor(bookDetails.getAuthor());
@@ -67,7 +67,7 @@ public class BookController {
     @DeleteMapping("/books/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable Long id) {
         Book book = bookRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Book not exist with id :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
 
         bookRepository.delete(book);
         Map<String, Boolean> response = new HashMap<>();
