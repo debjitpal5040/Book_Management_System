@@ -2,15 +2,17 @@
     <h3> Update Book </h3>
 </div>
 <div class="form">
-    <form autocomplete="on" (ngSubmit)="onSubmit()">
+    <form ngNativeValidate autocomplete="on" (ngSubmit)="onSubmit()">
         <label for="name"> Name </label>
-        <input type="text" id="name" [(ngModel)]="book.name" name="name" placeholder="Enter the Name"><br>
+        <input type="text" id="name" [(ngModel)]="book.name" name="name" placeholder="Enter the Name" required><br>
         <label for="author"> Author </label>
-        <input type="text" id="author" [(ngModel)]="book.author" name="author" placeholder="Enter the Author"><br>
+        <input type="text" id="author" [(ngModel)]="book.author" name="author" placeholder="Enter the Author"
+            required><br>
         <label for="price"> Price </label>
-        <input type="text" id="price" [(ngModel)]="book.price" name="price" placeholder="Enter the Price"><br>
+        <input type="number" id="price" [(ngModel)]="book.price" name="price" placeholder="Enter the Price"
+            required><br>
 
-        <button class="submit" type="submit">Submit</button>
+        <button class="submit" type="submit">Update</button>
         <button class="reset" type="reset">Reset</button>
     </form>
 </div><br>

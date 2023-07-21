@@ -17,14 +17,15 @@
     text-align: center;
 }
 
-label{
+label {
     color: white;
     display: inline-block;
     text-align: right;
     width: 100px;
 }
 
-input[type=text] {
+input[type=text],
+[type=number] {
     background-color: black;
     width: 30%;
     padding: 5px;
