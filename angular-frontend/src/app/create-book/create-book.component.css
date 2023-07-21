@@ -1,0 +1,67 @@
+.book {
+    text-align: center;
+    color: black;
+    margin: 30px;
+    font-family: cursive;
+}
+
+.book:hover {
+    color: white;
+    cursor: pointer;
+    transition: color 0.5s;
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.form {
+    text-align: center;
+}
+
+label{
+    color: white;
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+}
+
+input[type=text] {
+    background-color: black;
+    width: 30%;
+    padding: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px !important;
+    color: white;
+}
+
+
+input:focus {
+    background-color: navy;
+}
+
+.reset {
+    padding: 10px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 10%;
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.reset:hover {
+    background-color: navy;
+}
+
+.submit {
+    padding: 10px 8px;
+    background-color: green;
+    color: white;
+    border-radius: 10%;
+    cursor: pointer;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+.submit:hover {
+    background-color: navy;
+}

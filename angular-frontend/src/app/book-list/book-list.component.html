@@ -1,5 +1,7 @@
-<h2> Book List</h2>
-<table class="table table-striped">
+<div class="book">
+    <h2> Book List </h2>
+</div>
+<table>
     <thead>
         <tr>
             <th> Name </th>
@@ -14,9 +16,9 @@
             <td> {{ book.author }} </td>
             <td> {{ book.price }} </td>
             <td>
-                <button (click)="updateBook(book.id)" class="btn btn-info"> Update</button>
-                <button (click)="deleteBook(book.id)" class="btn btn-danger" style="margin-left: 10px"> Delete</button>
-                <button (click)="bookDetails(book.id)" class="btn btn-info" style="margin-left: 10px"> View</button>
+                <button (click)="bookDetails(book.id)" class="view"> View</button>
+                <button (click)="updateBook(book.id)" class="update"> Update</button>
+                <button (click)="deleteBook(book.id)" class="delete"> Delete</button>
             </td>
         </tr>
     </tbody>

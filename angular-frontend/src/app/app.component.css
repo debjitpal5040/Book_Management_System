@@ -1,0 +1,75 @@
+nav {
+    background-color: hsl(205, 80%, 34%);
+}
+
+.navbar-brand {
+    font-weight: bolder !important;
+    color: white;
+    font-family: cursive;
+    font-size: 22px !important;
+}
+
+.navbar-brand:hover {
+    color: aqua !important;
+    transition: color 0.5s;
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+nav div a {
+    margin-left: 2rem;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: aqua !important;
+    transition: color 0.5s;
+    background-color: navy;
+    transition: background-color 0.5s;
+    border-radius: 10px;
+    font-size: 15px;
+    transform: scale(1.2);
+    transition: transform 0.5s;
+}
+
+.navbar-toggler-icon {
+    display: inline-block;
+    color: white;
+    width: 3em !important;
+    height: 1.5em;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.btn:hover {
+    color: aqua !important;
+    background-color: navy !important;
+    transition: background-color 0.5s;
+    font-size: 15px !important;
+    transition: color 0.5s;
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.btn {
+    color: white !important;
+    border-color: navy !important;
+    width: 80px;
+    height: 40px;
+}
+
+.img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10%;
+}
+
+.img:hover {
+    transform: scale(1.2);
+    transition: transform 0.5s;
+}
