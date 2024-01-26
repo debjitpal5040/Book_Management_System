@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,7 @@ public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
+    
 
     // get all books
     @GetMapping("/books")
@@ -36,13 +38,13 @@ public class BookController {
 
     // create book rest api
     @PostMapping("/books")
-    public Book createBook(@RequestBody Book book) {
+    public Book createBook(@RequestBody @NonNull Book book) {
         return bookRepository.save(book);
     }
 
     // get book by id rest api
     @GetMapping("/books/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+    public ResponseEntity<Book> getBookById(@PathVariable @NonNull Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
         return ResponseEntity.ok(book);
@@ -51,7 +53,7 @@ public class BookController {
     // update book rest api
 
     @PutMapping("/books/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
+    public ResponseEntity<Book> updateBook(@PathVariable @NonNull Long id, @RequestBody Book bookDetails) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
 
@@ -65,7 +67,7 @@ public class BookController {
 
     // delete book rest api
     @DeleteMapping("/books/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable Long id) {
+    public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable @NonNull Long id) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Book does not exist with id :" + id));
 
