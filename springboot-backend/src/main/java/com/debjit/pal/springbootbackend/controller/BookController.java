@@ -28,7 +28,6 @@ public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
-    
 
     // get all books
     @GetMapping("/books")
@@ -66,6 +65,7 @@ public class BookController {
     }
 
     // delete book rest api
+    @SuppressWarnings("null")
     @DeleteMapping("/books/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteBook(@PathVariable @NonNull Long id) {
         Book book = bookRepository.findById(id)
