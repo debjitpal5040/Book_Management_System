@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { ActivatedRoute } from '@angular/router';
 import { BookService } from '../book.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-details',
   templateUrl: './book-details.component.html',
-  styleUrls: ['./book-details.component.css']
+  styleUrls: ['./book-details.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class BookDetailsComponent implements OnInit {
 

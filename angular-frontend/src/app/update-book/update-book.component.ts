@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { Book } from '../book';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-update-book',
   templateUrl: './update-book.component.html',
-  styleUrls: ['./update-book.component.css']
+  styleUrls: ['./update-book.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class UpdateBookComponent implements OnInit {
 

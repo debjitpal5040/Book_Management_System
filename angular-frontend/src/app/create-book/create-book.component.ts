@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book';
 import { BookService } from '../book.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-create-book',
   templateUrl: './create-book.component.html',
-  styleUrls: ['./create-book.component.css']
+  styleUrls: ['./create-book.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class CreateBookComponent implements OnInit {
 
