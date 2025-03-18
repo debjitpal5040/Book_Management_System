@@ -1,45 +1,38 @@
 services:
-  frontend:
+  angular-frontend:
     build:
       context: ./angular-frontend
       dockerfile: Dockerfile
+    container_name: angular-frontend
     ports:
       - "4200:4200"
     depends_on:
-      - backend
-    environment:
-      - API_BASE_URL=http://backend:8100 # Backend port is now 8100
+      - springboot-backend
 
-  backend:
+  springboot-backend:
     build:
       context: ./springboot-backend
       dockerfile: Dockerfile
+    container_name: springboot-backend
     ports:
-      - "8100:8100" # Backend port is now 8100
+      - "8100:8100"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-database:3306/book_management_system
+      SPRING_DATASOURCE_USERNAME: dev # override the default root username
+      SPRING_DATASOURCE_PASSWORD: dev@123 # override the default root password
     depends_on:
-      - database
-    environment:
-      SERVER_PORT: 8100 # Set server.port as an environment variable
-      SPRING_DATASOURCE_URL: jdbc:mysql://database:3306/book_management_system?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Kolkata # Timezone adjusted
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: Debjit@123
-      SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_SHOW_SQL: true
-      SPRING_JPA_OPEN_IN_VIEW: false
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.MySQL8Dialect # Set Hibernate dialect
-    volumes:
-      - spring_data:/app/spring_data
+      - mysql-database
 
-  database:
+  mysql-database:
     image: mysql:9.2.0
+    container_name: mysql-database
     environment:
-      MYSQL_ROOT_PASSWORD: Debjit@123 # Root password from your properties
-      MYSQL_DATABASE: book_management_system # Database name from your properties
-      MYSQL_USER: dev # Username from your properties
-      MYSQL_PASSWORD: Debjit@123 # Password from your properties
+      MYSQL_ROOT_PASSWORD: Debjit@123
+      MYSQL_DATABASE: book_management_system
+      MYSQL_USER: dev # create non-root user
+      MYSQL_PASSWORD: dev@123 # password for non-root user
     volumes:
-      - db_data:/var/lib/mysql
+      - mysql-database-data:/var/lib/mysql
 
 volumes:
-  db_data:
-  spring_data:
+  mysql-database-data:

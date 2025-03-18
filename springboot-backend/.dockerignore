@@ -1,9 +1,2 @@
-target/
-*.jar
-*.war
-*.ear
-*.iml
-*.ipr
-*.iws
 .DS_Store
 .vscode/
