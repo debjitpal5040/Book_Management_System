@@ -1,5 +1,5 @@
 # Stage 1: Build the Angular application
-FROM node:23.10.0-bookworm-slim
+FROM node:23.11.0-bookworm-slim
 
 # Set the working directory
 WORKDIR /app

@@ -8,6 +8,15 @@ services:
       - "4200:4200"
     depends_on:
       - springboot-backend
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    restart: on-failure
 
   springboot-backend:
     build:
@@ -16,16 +25,27 @@ services:
     container_name: springboot-backend
     ports:
       - "8100:8100"
+    depends_on:
+      - mysql-database
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-database:3306/book_management_system
       SPRING_DATASOURCE_USERNAME: dev # override the default root username
       SPRING_DATASOURCE_PASSWORD: dev@123 # override the default root password
-    depends_on:
-      - mysql-database
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1G
+        reservations:
+          cpus: "0.5"
+          memory: 512M
+    restart: on-failure
 
   mysql-database:
     image: mysql:9.2.0
     container_name: mysql-database
+    ports:
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: Debjit@123
       MYSQL_DATABASE: book_management_system
@@ -33,6 +53,15 @@ services:
       MYSQL_PASSWORD: dev@123 # password for non-root user
     volumes:
       - mysql-database-data:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+        reservations:
+          cpus: "0.1"
+          memory: 256M
+    restart: on-failure
 
 volumes:
   mysql-database-data:
