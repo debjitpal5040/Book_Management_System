@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o k8s/
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: mysql-database
+  name: mysql-database
+spec:
+  containers:
+    - env:
+        - name: MYSQL_DATABASE
+          value: book_management_system
+        - name: MYSQL_PASSWORD
+          value: dev@123
+        - name: MYSQL_ROOT_PASSWORD
+          value: Debjit@123
+        - name: MYSQL_USER
+          value: dev
+      image: debjitpal5040/book_management_system:mysql-database
+      name: mysql-database
+      ports:
+        - containerPort: 3306
+          protocol: TCP
+      resources:
+        limits:
+          cpu: 500m
+          memory: "536870912"
+        requests:
+          cpu: 100m
+          memory: "268435456"
+      volumeMounts:
+        - mountPath: /var/lib/mysql
+          name: mysql-database-data
+  restartPolicy: OnFailure
+  volumes:
+    - name: mysql-database-data
+      persistentVolumeClaim:
+        claimName: mysql-database-data

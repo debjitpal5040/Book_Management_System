@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml -o k8s/
+    kompose.version: 1.35.0 (HEAD)
+  labels:
+    io.kompose.service: springboot-backend
+  name: springboot-backend
+spec:
+  containers:
+    - env:
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: dev@123
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-database:3306/book_management_system
+        - name: SPRING_DATASOURCE_USERNAME
+          value: dev
+      image: debjitpal5040/book_management_system:springboot-backend
+      name: springboot-backend
+      ports:
+        - containerPort: 8100
+          protocol: TCP
+      resources:
+        limits:
+          cpu: "1"
+          memory: "1073741824"
+        requests:
+          cpu: 500m
+          memory: "536870912"
+  restartPolicy: OnFailure
