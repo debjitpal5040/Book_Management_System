@@ -1,25 +1,27 @@
 <div class="book">
-    <h2> Book List </h2>
+  <h2> Book List </h2>
 </div>
 <table>
-    <thead>
-        <tr>
-            <th> Name </th>
-            <th> Author </th>
-            <th> Price</th>
-            <th> Actions </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let book of books">
-            <td> {{ book.name }} </td>
-            <td> {{ book.author }} </td>
-            <td> {{ book.price }} </td>
-            <td>
-                <button (click)="bookDetails(book.id)" class="view"> View</button>
-                <button (click)="updateBook(book.id)" class="update"> Update</button>
-                <button (click)="deleteBook(book.id)" class="delete"> Delete</button>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Author </th>
+      <th> Price</th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (book of books; track book) {
+      <tr>
+        <td> {{ book.name }} </td>
+        <td> {{ book.author }} </td>
+        <td> {{ book.price }} </td>
+        <td>
+          <button (click)="bookDetails(book.id)" class="view"> View</button>
+          <button (click)="updateBook(book.id)" class="update"> Update</button>
+          <button (click)="deleteBook(book.id)" class="delete"> Delete</button>
+        </td>
+      </tr>
+    }
+  </tbody>
 </table>

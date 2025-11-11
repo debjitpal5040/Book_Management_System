@@ -3,13 +3,13 @@ import { Book } from '../book'
 import { BookService } from '../book.service'
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-book-list',
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.css'],
   standalone: true,
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule]
 })
 export class BookListComponent implements OnInit {
 
